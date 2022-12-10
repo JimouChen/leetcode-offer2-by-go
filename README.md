@@ -1,2 +1,2 @@
-# offer2-by-go
-用go刷剑指offer2
+
+- 用go刷leetcode剑指offer2
