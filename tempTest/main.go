@@ -51,9 +51,28 @@ func singleNumber(nums []int) []int {
 
 	return res
 }
+func singleNumber2(nums []int) []int {
+	res := make([]int, 2)
+	temp := 0
+	for _, num := range nums {
+		temp ^= num
+	}
+	k := 0
+	for temp>>k&1 == 0 {
+		k++
+	}
+	for _, num := range nums {
+		if num>>k&1 == 1 {
+			res[0] ^= num
+		} else {
+			res[1] ^= num
+		}
+	}
+	return res
+}
 func main() {
 	// to test the solution function
-	fmt.Println(singleNumber([]int{1, 2, 1, 3, 2, 5}))
-	fmt.Println(singleNumber([]int{1, 0}))
-	fmt.Println(singleNumber([]int{-1, 0}))
+	fmt.Println(singleNumber2([]int{1, 2, 1, 3, 2, 5}))
+	fmt.Println(singleNumber2([]int{1, 0}))
+	fmt.Println(singleNumber2([]int{-1, 0}))
 }
